@@ -11,13 +11,15 @@ let package = Package(
             name: "MongoDB",
             targets: ["MongoDB"]),
     ],
+    dependencies: [
+        .package(url: "https://github.com/zachbazov/URLAuthentication.git", from: "1.0.0")
+    ],
     targets: [
         // Targets are the basic building blocks of a package, defining a module or a test suite.
         // Targets can depend on other targets in this package and products from dependencies.
         .target(
-            name: "MongoDB"),
-        .testTarget(
-            name: "MongoDBTests",
-            dependencies: ["MongoDB"]),
+            name: "MongoDB", dependencies: [
+                "URLAuthentication"
+            ]),
     ]
 )
