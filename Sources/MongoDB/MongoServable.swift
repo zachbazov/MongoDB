@@ -8,5 +8,8 @@
 import URLDataTransfer
 
 public protocol MongoServable {
-    var dataTransferService: any DataTransferRequestable { get }
+    
+    associatedtype DataTransferType: DataTransferRequestable
+    
+    var dataTransferService: DataTransferType { get }
 }
