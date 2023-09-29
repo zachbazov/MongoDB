@@ -6,8 +6,13 @@
 //
 
 import Foundation
+import CodeBureau
 
-protocol MongoServerDelegate: AnyObject {
-    func serverDidLaunch(_ server: MongoServer)
-    func server(_ server: MongoServer, reauthenticationFromStore store: UserResponseStore)
+public protocol MongoServerDelegate: AnyObject {
+    
+    associatedtype ServerType: MongoServable
+    associatedtype StoreType: ResponsePersistable
+    
+    func serverDidLaunch(_ server: ServerType)
+    func server(_ server: ServerType, reauthenticationFromStore store: StoreType)
 }
